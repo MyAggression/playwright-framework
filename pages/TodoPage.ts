@@ -56,7 +56,7 @@ export class TodoPage extends BasePage {
     await expect(editInput).toBeVisible();
     await editInput.fill(newText);
     await editInput.press('Enter');
-    await expect(item).toContainText(newText);
+    await expect(this.todoItems.filter({ hasText: newText })).toBeVisible();
   }
 
   /**
@@ -82,7 +82,9 @@ export class TodoPage extends BasePage {
       active: '#/active',
       completed: '#/completed',
     };
-    await this.page.locator(`.filters a[href="${hrefMap[status]}"]`).click();
+    const href = hrefMap[status];
+    await this.page.locator(`.filters a[href="${href}"]`).click();
+    await this.page.locator(`.filters a.selected[href="${href}"]`).waitFor();
   }
 
   /**

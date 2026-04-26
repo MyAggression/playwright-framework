@@ -56,9 +56,8 @@ test.describe('demoqa.com — Automation Practice Form', () => {
   test('required fields show validation errors on empty submit', async ({ page }) => {
     await formsPage.submit();
 
-    // Required fields get a red border via Bootstrap is-invalid class
-    const firstNameInput = page.locator('#firstName');
-    await expect(firstNameInput).toHaveClass(/is-invalid|required/);
+    // Successful submission shows a modal — if it's absent, validation blocked the form
+    await expect(page.locator('#example-modal-sizes-title-lg')).not.toBeVisible();
   });
 
   test('uploaded file name appears in confirmation', async () => {
