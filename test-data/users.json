@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "email": "eve.holt@reqres.in",
+    "password": "cityslicka",
+    "role": "user",
+    "expectedStatus": 200,
+    "description": "valid user — should authenticate successfully"
+  },
+  {
+    "id": 2,
+    "email": "eve.holt@reqres.in",
+    "password": "wrongpassword",
+    "role": "user",
+    "expectedStatus": 400,
+    "description": "valid email, wrong password — should fail auth"
+  },
+  {
+    "id": 3,
+    "email": "nobody@example.com",
+    "password": "password123",
+    "role": "user",
+    "expectedStatus": 400,
+    "description": "non-existent user — should return 400"
+  },
+  {
+    "id": 4,
+    "email": "",
+    "password": "password123",
+    "role": "user",
+    "expectedStatus": 400,
+    "description": "empty email — should fail validation"
+  },
+  {
+    "id": 5,
+    "email": "admin@reqres.in",
+    "password": "adminpassword",
+    "role": "admin",
+    "expectedStatus": 400,
+    "description": "admin role attempt — should not grant elevated access via login"
+  }
+]

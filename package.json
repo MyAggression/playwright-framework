@@ -1,0 +1,20 @@
+{
+  "name": "playwright-framework",
+  "version": "1.0.0",
+  "description": "Production-grade E2E and API test automation framework. Playwright + TypeScript.",
+  "author": "Daniil Skoklev",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e",
+    "test:api": "playwright test tests/api",
+    "test:ci": "playwright test --reporter=github",
+    "report": "playwright show-report",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.4.5"
+  }
+}
