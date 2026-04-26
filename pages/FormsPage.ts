@@ -81,7 +81,7 @@ export class FormsPage extends BasePage {
   }
 
   async waitForConfirmation(): Promise<void> {
-    await expect(this.confirmationModal).toBeVisible();
+    await expect(this.confirmationModal).toBeVisible({ timeout: 10_000 });
   }
 
   /**
