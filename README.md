@@ -65,7 +65,7 @@ See [docs/architecture.md](docs/architecture.md) for full rationale on every dec
 
 ### Local
 ```bash
-git clone https://github.com/MyAggression/playwright-framework.git
+git clone https://github.com/your-name/playwright-framework.git
 cd playwright-framework
 npm install
 npx playwright install --with-deps
