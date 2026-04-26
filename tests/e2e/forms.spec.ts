@@ -41,6 +41,7 @@ test.describe('demoqa.com — Automation Practice Form', () => {
         await formsPage.fillPersonalInfo(data.firstName, data.lastName, data.email, data.mobile);
         await formsPage.selectGender(data.gender);
         await formsPage.submit();
+        await formsPage.waitForConfirmation();
 
         const confirmation = await formsPage.getConfirmationData();
         expect(confirmation['Student Name']).toContain(data.firstName);
@@ -65,6 +66,7 @@ test.describe('demoqa.com — Automation Practice Form', () => {
     await formsPage.selectGender('Male');
     await formsPage.uploadFile(FIXTURE_FILE);
     await formsPage.submit();
+    await formsPage.waitForConfirmation();
 
     const confirmation = await formsPage.getConfirmationData();
     expect(confirmation['Picture']).toContain('sample.png');

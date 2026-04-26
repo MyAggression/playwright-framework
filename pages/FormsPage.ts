@@ -44,7 +44,12 @@ export class FormsPage extends BasePage {
    * The actual radio inputs are hidden; labels are interactive.
    */
   async selectGender(gender: GenderOption): Promise<void> {
-    await this.page.locator(`.custom-radio label`).filter({ hasText: gender }).click();
+    const genderMap: Record<GenderOption, string> = {
+      Male: 'gender-radio-1',
+      Female: 'gender-radio-2',
+      Other: 'gender-radio-3',
+    };
+    await this.page.locator(`label[for="${genderMap[gender]}"]`).click({ force: true });
   }
 
   /**
@@ -73,6 +78,9 @@ export class FormsPage extends BasePage {
   async submit(): Promise<void> {
     await this.submitButton.scrollIntoViewIfNeeded();
     await this.submitButton.click({ force: true });
+  }
+
+  async waitForConfirmation(): Promise<void> {
     await expect(this.confirmationModal).toBeVisible();
   }
 

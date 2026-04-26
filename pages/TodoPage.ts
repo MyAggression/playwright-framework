@@ -53,6 +53,7 @@ export class TodoPage extends BasePage {
     const item = this.todoItems.filter({ hasText: oldText });
     await item.locator('label').dblclick();
     const editInput = item.locator('.edit');
+    await expect(editInput).toBeVisible();
     await editInput.fill(newText);
     await editInput.press('Enter');
     await expect(item).toContainText(newText);
